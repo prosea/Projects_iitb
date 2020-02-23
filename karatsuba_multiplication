@@ -1,0 +1,15 @@
+def karatsuba_multiplication(x,y):
+    if (((len(str(x)) == 1) or (len(str(y)) == 1))):
+	    return x*y
+    else:
+        l=max(len(str(x)),len(str(y)))
+        n=int(l/2)
+        a= int(x/10**n)
+        
+        b= int(x%10**n)
+        c= int(y/10**n)
+        d= int(y%10**n)
+        ac=karatsuba_multiplication(a,c)
+        bd=karatsuba_multiplication(b,d)
+        ad_plus_bc = karatsuba_multiplication(a+b,c+d) - ac - bd
+        return (ac*10**l)+(ad_plus_bc*10**n)
